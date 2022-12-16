@@ -12,40 +12,60 @@
  * VỚI MỖI DỰ ÁN KHÁC NHAU, THAY ĐỔI CONSTRUCTOR *
  *************************************************/
 class CallApi {
-    constructor(url){
+    constructor(url) {
         this.url = url;
     }
     // TODO: Trả về 1 promise chứa toàn bộ dữ liệu của mảng data
-    getItem(){
+    getItem() {
         return axios({ //! Trả về Promise chứa mảng data
-            url:this.url,
-            method:"GET"
+            url: this.url,
+            method: "GET",
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+            },
         })
     }
-    getItemById(id){
+    getItemById(id) {
         return axios({ //! Trả về Promise chứa Item
-            url:`${this.url}/${id}`,
-            method:"GET"
+            url: `${this.url}/${id}`,
+            method: "GET",
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+            },
         })
     }
-    setItem(item){
+    setItem(item) {
         return axios({ //! Set dữ liệu, trả về Promise
-            url:this.url,
-            method:"POST",
-            data: item
+            url: this.url,
+            method: "POST",
+            data: item,
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+            },
         })
     }
-    setItemById(item,id){
+    setItemById(item, id) {
         return axios({ // !Cập nhật dữ liệu, trả về Promise
-            url:`${this.url}/${id}`,
-            method:"PUT",
-            data:item
+            url: `${this.url}/${id}`,
+            method: "PUT",
+            data: item,
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+            },
         })
     }
-    delItemById(id){
+    delItemById(id) {
         return axios({ //! Xóa dữ liệu, trả về Promise
-            url:`${this.url}/${id}`,
-            method:"DELETE",
+            url: `${this.url}/${id}`,
+            method: "DELETE",
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+            },
         })
     }
 }
