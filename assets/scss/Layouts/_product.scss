@@ -1,0 +1,46 @@
+.product {
+    #product {
+        .card {
+            &:hover {
+                box-shadow: 0 16px 16px 0 rgba(0,0,0,0.19);
+            }
+
+        }
+    }
+}
+.btn-add-card {
+    border: 1px solid;
+    display: inline-block;
+    padding: 0px 16px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  .go-left,
+  .go-right {
+    // background-color: red;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,0.19);
+    cursor: pointer;
+  }
+
+  .add-card {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .quantity {
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-12%);
+    /* background-color: yellow; */
+  }

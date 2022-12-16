@@ -1,0 +1,90 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --animate-delay: 0.2s;
+}
+
+html, body {
+  font-family: "Montserrat", sans-serif;
+}
+
+#tbHeaderAdmin {
+  background-color: gray;
+  border: none;
+}
+#tbHeaderAdmin th {
+  text-align: center;
+}
+
+.product #product .card:hover {
+  box-shadow: 0 16px 16px 0 rgba(0, 0, 0, 0.19);
+}
+
+.btn-add-card {
+  border: 1px solid;
+  display: inline-block;
+  padding: 0px 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.go-left,
+.go-right {
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.19);
+  cursor: pointer;
+}
+
+.add-card {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.quantity {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: auto;
+  position: relative;
+  top: 50%;
+  transform: translateY(-12%);
+  /* background-color: yellow; */
+}
+
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+          animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}/*# sourceMappingURL=style.css.map */

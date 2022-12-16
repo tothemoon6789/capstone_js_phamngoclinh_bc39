@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Admin</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+
+<body style="overflow-x: hidden;">
+  <div class="container">
+    <a name="" id="" class="btn btn-info btn-sm" href="index.html" role="button">Trang chủ</a>
+    <h4>Admin page</h4>
+    <h1>Quản lý sản phẩm</h1>
+    <div class="d-flex justify-content-between" style="align-items: center;">
+      
+      <button onclick="addNewItem()" type="button" class="btn btn-primary" data-toggle="modal"
+        data-target="#exampleModal">Thêm mới</button>
+      <div class="d-flex justify-content-between ">
+        <div class="form-group">
+         
+          
+          <select class="form-control" name="phoneType" onchange="phoneType()" id="phoneType">
+            <option>Chọn hãng</option>
+            <option value="Samsung">Samsung</option>
+            <option value="iphone">Apple</option>
+          </select>
+        </div>
+        <div class="form-group">
+      
+          <input onkeyup="searchProduct()" type="text" name="searchNameProduct" id="searchNameProduct" class="form-control" placeholder="Nhập tên sản phẩm" aria-describedby="helpId">
+        </div>
+      </div>
+    </div>
+    <table class="table table-hover">
+      <thead id="tbHeaderAdmin" class="table-dark">
+        <tr>
+          <th>STT</th>
+          <th>TÊN SẢN PHẨM</th>
+          <th>GIÁ</th>
+          <th>HÌNH</th>
+          <th>MÔ TẢ</th>
+          <th>ACTION</th>
+        </tr>
+      </thead>
+      
+      <tbody id="tbodyAdmin">
+
+
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-center">
+
+      <div id="loaderAdmin" class="loader"></div>
+    </div>
+   
+  </div>
+  <!-- TODO: Modal -->
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-info">
+          <h5 class="modal-title text-light" id="exampleModalLabel">THÊM MỚI SẢN PHẨM</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form id="formModal">
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="productName">Tên sản phẩm</label>
+              <input type="text" class="form-control" name="productName" id="productName"
+                placeholder="Nhập tên sản phẩm">
+            </div>
+            <div class="form-group">
+              <label for="productPrice">Giá sản phẩm</label>
+              <input type="text" class="form-control" name="productPrice" id="productPrice" aria-describedby="helpId"
+                placeholder="Nhập giá">
+            </div>
+            <div class="form-group">
+              <label for="productImage">Hình ảnh</label>
+              <input type="text" class="form-control" name="productImage" id="productImage" aria-describedby="helpId"
+                placeholder="Nhập link hình ảnh">
+            </div>
+            <div class="form-group">
+              <label for="productDes">Mô tả</label>
+              <input type="text" class="form-control" name="productDes" id="productDes" aria-describedby="helpId"
+                placeholder="Nhập mô tả">
+            </div>
+            <div class="form-group">
+              <label for="productType">Hãng</label>
+              <select class="form-control" name="productType" id="productType">
+                <option selected>Chọn hãng</option>
+                <option>iphone</option>
+                <option>Samsung</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="productScreen">Screen</label>
+              <input type="text" class="form-control" name="productScreen" id="productScreen" aria-describedby="helpId"
+                placeholder="Nhập chiều dài màn hình">
+            </div>
+            <div class="form-group">
+              <label for="productCamera">Back Camera</label>
+              <input type="text" name="productCamera" id="productCamera" class="form-control"
+                placeholder="Nhập camera sau" aria-describedby="helpId">
+            </div>
+            <div class="form-group">
+              <label for="productFrontCamera">Front Camera</label>
+              <input type="text" class="form-control" name="productFrontCamera" id="productFrontCamera"
+                aria-describedby="helpId" placeholder="Nhập camera trước">
+            </div>
+          </div>
+        </form>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button id="btnAdd" onclick="add()" type="button" class="btn btn-primary">Add</button>
+          <button id="btnUpdate" type="button" class="btn btn-primary">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- TODO: alert -->
+  <div id="alertDelete">
+
+  </div>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(() => {
+      $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').trigger('focus')
+      })
+    })
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"
+    integrity="sha512-zJYu9ICC+mWF3+dJ4QC34N9RA0OVS1XtPbnf6oXlvGrLGNB8egsEzu/5wgG90I61hOOKvcywoLzwNmPqGAdATA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="../controllers/admin.js" type="module"></script>
+</body>
+
+</html>
